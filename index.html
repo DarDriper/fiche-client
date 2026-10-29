@@ -1,0 +1,200 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-XAuigYdS6Q8EiIFV5F1yjwz9y53jNa4KZ5NgYMeX7R0='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data: blob:; connect-src https://script.google.com https://script.googleusercontent.com; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Dar — Fiche client</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@600;700&display=swap">
+<style>
+:root{--bg:#EDEFF6;--card:#FFFFFF;--text:#12131C;--text-2:#4D4F63;--text-3:#686A80;--line:#DADCE7;--iris:#5A43E0;
+  --neg:#C42E45;--pos:#0B7A55;--soft:#F4F3FF;--r:16px;--sans:"Plus Jakarta Sans",-apple-system,"Segoe UI",system-ui,sans-serif;
+  --display:"Sora","Plus Jakarta Sans",-apple-system,"Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+.wrap{max-width:560px;margin:0 auto;padding:20px 16px 48px}
+.top{display:flex;justify-content:flex-end;margin:4px 0 18px}
+.lang{display:flex;background:#fff;border:1px solid var(--line);border-radius:99px;padding:3px}
+.lang button{border:0;background:none;font:inherit;font-size:13px;font-weight:700;padding:8px 12px;min-height:36px;border-radius:99px;color:var(--text-3);cursor:pointer}
+.lang button.on{background:var(--iris);color:#fff}
+h1{font-family:var(--display);font-size:26px;letter-spacing:-.03em;margin:6px 0 6px;line-height:1.2}
+.intro{color:var(--text-2);font-size:15px;margin:0 0 18px}
+.card{background:var(--card);border-radius:22px;padding:18px 16px 6px;margin-bottom:14px;box-shadow:0 1px 2px rgba(20,20,60,.04),0 14px 30px -22px rgba(40,30,110,.35)}
+.card h2{font-family:var(--display);font-size:17px;margin:0 0 12px;display:flex;justify-content:space-between;align-items:center}
+.rm{border:0;background:none;color:var(--neg);font:inherit;font-size:14px;font-weight:700;min-height:44px;padding:0 4px;cursor:pointer}
+label.f{display:block;margin-bottom:16px}
+label.f>span{display:block;font-weight:700;font-size:15px;margin-bottom:7px}
+label.f>span i{color:var(--neg);font-style:normal;margin-left:4px}
+input,select{width:100%;font:inherit;font-size:16px;color:var(--text);background:#fff;border:1.5px solid var(--line);border-radius:var(--r);
+  min-height:52px;padding:12px 16px;appearance:none;-webkit-appearance:none}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2312131C' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:20px;padding-right:44px}
+input:focus,select:focus{outline:none;border-color:var(--iris);box-shadow:0 0 0 4px rgba(90,67,224,.14)}
+.bad input,.bad select,.bad .drop,.bad canvas{border-color:var(--neg)}
+.err{display:none;color:var(--neg);font-size:13px;font-weight:600;margin-top:6px}.bad .err{display:block}
+.two{display:grid;grid-template-columns:1fr;gap:0}
+@media (min-width:520px){.two{grid-template-columns:1fr 1fr;gap:10px}}
+.drop{display:flex;align-items:center;justify-content:center;gap:10px;min-height:64px;border:1.5px dashed var(--line);border-radius:var(--r);
+  background:#FAFAFD;color:var(--text-2);font-weight:600;cursor:pointer;text-align:center;padding:10px}
+.drop svg{width:22px;height:22px;fill:none;stroke:#E8A317;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.drop img{max-height:120px;max-width:100%;border-radius:10px}
+.drop input{display:none}
+.add{width:100%;min-height:52px;border:1.5px dashed var(--iris);border-radius:var(--r);background:var(--soft);color:var(--iris);
+  font:inherit;font-weight:700;cursor:pointer;margin:0 0 14px}
+.chk{display:flex;gap:12px;align-items:flex-start;padding:4px 0 16px;cursor:pointer;font-weight:600}
+.chk input{width:24px;height:24px;min-height:0;padding:0;margin:0;flex-shrink:0;appearance:auto;-webkit-appearance:checkbox;accent-color:var(--iris)}
+canvas{display:block;width:100%;height:190px;border:1.5px dashed var(--line);border-radius:var(--r);background:#fff;touch-action:none}
+.sigbtns{display:flex;gap:10px;margin:10px 0 6px}
+.sigbtns button{min-height:44px;padding:0 16px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font:inherit;font-weight:600;cursor:pointer}
+.hint{font-size:13px;color:var(--text-3);margin:0 0 14px}
+.send{width:100%;min-height:56px;border:0;border-radius:18px;background:linear-gradient(135deg,#7E6BFF,#4F33DA);color:#fff;font:inherit;
+  font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 12px 28px -12px rgba(90,67,224,.7)}
+.send:disabled{opacity:.6}
+.msg{margin-top:12px;font-weight:600;color:var(--neg);text-align:center;min-height:1.5em}
+.done{text-align:center;padding:40px 10px}
+.done .ok{width:72px;height:72px;border-radius:50%;background:#E3F5EE;margin:0 auto 18px;display:flex;align-items:center;justify-content:center}
+.done .ok svg{width:36px;height:36px;fill:none;stroke:var(--pos);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.priv{font-size:12.5px;color:var(--text-3);text-align:center;margin-top:16px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+</style></head><body>
+<div class="wrap" id="app">
+  <div class="top">
+    <div class="lang"><button type="button" data-l="fr" class="on">FR</button><button type="button" data-l="en">EN</button></div></div>
+  <form id="form" novalidate>
+    <h1 data-t="title"></h1><p class="intro" data-t="intro"></p>
+    <div id="guests"></div>
+    <button type="button" class="add" id="addGuest" data-t="addGuest"></button>
+    <div class="card">
+      <h2 data-t="stay"></h2>
+      <label class="f" data-k="kids"><span><b data-t="kids"></b><i>*</i></span><input type="number" name="kids" inputmode="numeric" min="0" max="20" value="0"><div class="err" data-t="req"></div></label>
+      <div class="two">
+        <label class="f" data-k="arrive"><span><b data-t="arrive"></b><i>*</i></span><input type="date" name="arrive"><div class="err" data-t="req"></div></label>
+        <label class="f" data-k="leave"><span><b data-t="leave"></b><i>*</i></span><input type="date" name="leave"><div class="err" data-t="badLeave"></div></label>
+      </div>
+    </div>
+    <div class="card">
+      <label class="chk" data-k="certify"><input type="checkbox" name="certify"><span><b data-t="certify"></b> *<div class="err" data-t="req"></div></span></label>
+      <label class="f" data-k="signature" style="margin-bottom:0"><span><b data-t="sign"></b><i>*</i></span></label>
+      <div data-k="signature"><canvas id="sig"></canvas><div class="err" data-t="needSign"></div></div>
+      <div class="sigbtns"><button type="button" id="sigClear" data-t="clear"></button><button type="button" id="sigUndo" data-t="undo"></button></div>
+      <p class="hint" data-t="signHint"></p>
+    </div>
+    <div class="hp" aria-hidden="true"><input name="website" tabindex="-1" autocomplete="off"></div>
+    <button class="send" id="send" type="submit" data-t="send"></button>
+    <div class="msg" id="msg" role="alert"></div>
+    <p class="priv" data-t="privacy"></p>
+  </form>
+</div>
+<template id="guestTpl">
+  <div class="card guest">
+    <h2><span class="gt"></span><button type="button" class="rm" data-t="remove"></button></h2>
+    <label class="f" data-k="last"><span><b data-t="last"></b><i>*</i></span><input name="last" autocomplete="family-name"><div class="err" data-t="req"></div></label>
+    <label class="f" data-k="first"><span><b data-t="first"></b><i>*</i></span><input name="first" autocomplete="given-name"><div class="err" data-t="req"></div></label>
+    <label class="f" data-k="sex"><span><b data-t="sex"></b><i>*</i></span><select name="sex"><option value="" data-t="choose"></option>
+      <option value="M" data-t="male"></option><option value="F" data-t="female"></option></select><div class="err" data-t="req"></div></label>
+    <label class="f" data-k="nationality"><span><b data-t="nat"></b><i>*</i></span><input name="nationality"><div class="err" data-t="req"></div></label>
+    <label class="f" data-k="birth"><span><b data-t="birth"></b><i>*</i></span><input type="date" name="birth" autocomplete="bday"><div class="err" data-t="req"></div></label>
+    <label class="f" data-k="residence"><span><b data-t="res"></b><i>*</i></span><input name="residence" autocomplete="country-name"><div class="err" data-t="req"></div></label>
+    <label class="f" data-k="idType"><span><b data-t="idType"></b><i>*</i></span><select name="idType"><option value="" data-t="choose"></option>
+      <option value="passport" data-t="passport"></option><option value="cin" data-t="cin"></option>
+      <option value="residence" data-t="resCard"></option><option value="other" data-t="otherId"></option></select><div class="err" data-t="req"></div></label>
+    <label class="f" data-k="idNumber"><span><b data-t="idNum"></b><i>*</i></span><input name="idNumber" autocapitalize="characters"><div class="err" data-t="req"></div></label>
+    <div class="f" data-k="photo" style="margin-bottom:16px"><span style="display:block;font-weight:700;margin-bottom:7px"><b data-t="photo"></b><i style="color:var(--neg);font-style:normal;margin-left:4px">*</i></span>
+      <label class="drop"><svg viewBox="0 0 24 24"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8a4 4 0 0 1 .5 7.97"/><path d="M12 12v8M8.8 15.2 12 12l3.2 3.2"/></svg>
+        <span class="dl" data-t="pick"></span><input type="file" name="photo" accept="image/*"></label><div class="err" data-t="needPhoto"></div></div>
+  </div>
+</template>
+<script>
+"use strict";
+const T={fr:{title:"Fiche client",intro:"Merci de remplir cette fiche avant votre arrivée. Elle est obligatoire pour tout séjour au Maroc.",
+  guest:"Voyageur",guestN:"Voyageur {n}",addGuest:"+ Ajouter un autre adulte",remove:"Retirer",stay:"Votre séjour",
+  last:"Nom",first:"Prénom",sex:"Sexe",choose:"Sélectionnez une option",male:"Homme",female:"Femme",nat:"Nationalité",
+  birth:"Date de naissance",res:"Pays de résidence",kids:"Nombre d'enfants -18 ans",arrive:"Date d'arrivée",
+  leave:"Date de départ prévisionnelle",idType:"Nature de la pièce d'identité présentée",passport:"Passeport",
+  cin:"Carte d'identité nationale",resCard:"Carte de séjour",otherId:"Autre",idNum:"N° de la pièce d'identité présentée",
+  photo:"Photo/Scan de la pièce d'identité",pick:"Cliquez pour sélectionner un fichier",changePhoto:"Photo ajoutée — toucher pour changer",
+  certify:"Je certifie l'exactitude des informations",sign:"Signature du client",clear:"Effacer",undo:"Annuler",
+  signHint:"Dessinez votre signature dans le cadre.",send:"Envoyer la fiche",sending:"Envoi…",req:"Champ obligatoire",
+  badLeave:"La date de départ doit être après l'arrivée",needSign:"Merci de signer dans le cadre",needPhoto:"Merci d'ajouter la photo de la pièce",
+  fix:"Merci de compléter les champs en rouge.",fail:"L'envoi n'a pas abouti. Vérifiez votre connexion et réessayez.",
+  busy:"Beaucoup de fiches en ce moment — réessayez dans quelques minutes.",
+  doneT:"Merci, c'est bien reçu !",doneD:"Votre fiche a été envoyée à votre hôte. À très bientôt à Dar.",
+  privacy:"Vos informations sont transmises uniquement à votre hôte, pour la déclaration obligatoire des voyageurs."},
+ en:{title:"Guest registration form",intro:"Please fill this in before you arrive. It is required for every stay in Morocco.",
+  guest:"Guest",guestN:"Guest {n}",addGuest:"+ Add another adult",remove:"Remove",stay:"Your stay",
+  last:"Last name",first:"First name",sex:"Sex",choose:"Select an option",male:"Male",female:"Female",nat:"Nationality",
+  birth:"Date of birth",res:"Country of residence",kids:"Number of children under 18",arrive:"Arrival date",
+  leave:"Expected departure date",idType:"Type of ID document",passport:"Passport",cin:"National ID card",
+  resCard:"Residence permit",otherId:"Other",idNum:"ID document number",photo:"Photo/scan of the ID document",
+  pick:"Tap to choose a file",changePhoto:"Photo added — tap to change",certify:"I certify that this information is accurate",
+  sign:"Guest signature",clear:"Clear",undo:"Undo",signHint:"Draw your signature inside the box.",send:"Send the form",
+  sending:"Sending…",req:"Required",badLeave:"Departure must be after arrival",needSign:"Please sign inside the box",
+  needPhoto:"Please add a photo of the ID",fix:"Please complete the fields in red.",
+  fail:"Sending didn't work. Check your connection and try again.",busy:"Lots of forms right now — please try again in a few minutes.",
+  doneT:"Thank you, we've got it!",doneD:"Your form was sent to your host. See you soon at Dar.",
+  privacy:"Your details go only to your host, for the mandatory guest declaration."}};
+let L=(navigator.language||"fr").toLowerCase().startsWith("fr")?"fr":"en";
+const $=(q,r)=>(r||document).querySelector(q),$$=(q,r)=>[...(r||document).querySelectorAll(q)];
+const tx=(k,v)=>{let s=T[L][k]||k;if(v)for(const p in v)s=s.replace("{"+p+"}",v[p]);return s;};
+function paint(){document.documentElement.lang=L;
+  $$("[data-t]").forEach(e=>{e.textContent=tx(e.dataset.t);});
+  $$(".guest").forEach((g,i)=>{$(".gt",g).textContent=$$(".guest").length>1?tx("guestN",{n:i+1}):tx("guest");
+    $(".rm",g).style.display=i?"":"none";if(g._photo)$(".dl",g).textContent=tx("changePhoto");});
+  $$(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===L));}
+
+/* ID photo: shrink on the phone to ≤1600 px JPEG so it sends fast on mobile data */
+function shrink(file){return new Promise((ok,no)=>{const r=new FileReader();r.onerror=no;r.onload=()=>{const im=new Image();
+  im.onerror=no;im.onload=()=>{const k=Math.min(1,1600/Math.max(im.width,im.height)),c=document.createElement("canvas");
+    c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);
+    ok(c.toDataURL("image/jpeg",.82));};im.src=r.result;};r.readAsDataURL(file);});}
+function addGuest(){const g=$("#guestTpl").content.firstElementChild.cloneNode(true);
+  $(".rm",g).onclick=()=>{g.remove();paint();};
+  $("input[type=file]",g).onchange=async e=>{const f=e.target.files[0];if(!f)return;
+    try{g._photo=await shrink(f);const d=$(".drop",g);d.querySelector("svg").style.display="none";
+      let im=$("img",d);if(!im){im=document.createElement("img");d.insertBefore(im,d.firstChild);}im.src=g._photo;
+      g.querySelector('[data-k="photo"]').classList.remove("bad");paint();}catch(err){g._photo=null;}};
+  $("#guests").appendChild(g);paint();}
+$("#addGuest").onclick=addGuest;
+/* an error clears as soon as its field is filled */
+["input","change"].forEach(ev=>$("#form").addEventListener(ev,e=>{const k=e.target.closest&&e.target.closest("[data-k]");if(k)k.classList.remove("bad");$("#msg").textContent="";}));
+$$(".lang button").forEach(b=>b.onclick=()=>{L=b.dataset.l;paint();});
+
+/* signature: strokes kept so "Annuler" removes the last one */
+const cv=$("#sig"),cx=cv.getContext("2d");let strokes=[],cur=null;
+function fit(){const r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;cv.width=r.width*d;cv.height=r.height*d;
+  cx.setTransform(d,0,0,d,0,0);draw();}
+function draw(){cx.clearRect(0,0,cv.width,cv.height);cx.lineWidth=2.4;cx.lineCap="round";cx.lineJoin="round";cx.strokeStyle="#12131C";
+  strokes.forEach(s=>{cx.beginPath();s.forEach((p,i)=>i?cx.lineTo(p[0],p[1]):cx.moveTo(p[0],p[1]));if(s.length===1)cx.lineTo(s[0][0]+.1,s[0][1]);cx.stroke();});}
+const pt=e=>{const r=cv.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top];};
+cv.onpointerdown=e=>{cv.setPointerCapture(e.pointerId);cur=[pt(e)];strokes.push(cur);draw();};
+cv.onpointermove=e=>{if(!cur)return;cur.push(pt(e));draw();};
+cv.onpointerup=cv.onpointercancel=()=>{cur=null;if(strokes.length)$('[data-k="signature"]:not(label)').classList.remove("bad");};
+$("#sigClear").onclick=()=>{strokes=[];draw();};$("#sigUndo").onclick=()=>{strokes.pop();draw();};
+addEventListener("resize",fit);
+
+function collect(){
+  const v=(el,n)=>(($(`[name="${n}"]`,el)||{}).value||"").trim();let ok=true;
+  const mark=(el,bad)=>{el.classList.toggle("bad",bad);if(bad)ok=false;};
+  const guests=$$(".guest").map(g=>{const o={};["last","first","sex","nationality","birth","residence","idType","idNumber"].forEach(k=>{
+      o[k]=v(g,k);mark(g.querySelector(`[data-k="${k}"]`),!o[k]);});
+    o.photo=g._photo||"";mark(g.querySelector('[data-k="photo"]'),!o.photo);return o;});
+  const f=$("#form"),arrive=v(f,"arrive"),leave=v(f,"leave");
+  mark($('[data-k="arrive"]'),!arrive);mark($('[data-k="leave"]'),!leave||(arrive&&leave<arrive));
+  const kids=v(f,"kids");mark($('[data-k="kids"]'),kids===""||+kids<0);
+  const certify=$('[name="certify"]').checked;mark($('[data-k="certify"]'),!certify);
+  mark($('[data-k="signature"]:not(label)'),!strokes.length);
+  return ok?{guests,kids:+kids,arrive,leave,certify,lang:L,website:v(f,"website"),signature:strokes.length?cv.toDataURL("image/png"):""}:null;}
+$("#form").onsubmit=e=>{e.preventDefault();const data=collect(),msg=$("#msg");msg.textContent="";
+  if(!data){msg.textContent=tx("fix");const b=$(".bad");if(b&&b.scrollIntoView)b.scrollIntoView({behavior:"smooth",block:"center"});return;}
+  const btn=$("#send");btn.disabled=true;btn.textContent=tx("sending");
+  submit(JSON.stringify(data),()=>{$("#app").innerHTML=`<div class="done"><div class="ok"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+      <h1>${tx("doneT")}</h1><p class="intro">${tx("doneD")}</p></div>`;scrollTo(0,0);},
+    err=>{btn.disabled=false;btn.textContent=tx("send");
+      msg.textContent=/busy/.test(String(err&&err.message||err))?tx("busy"):tx("fail");});};
+// Inside Apps Script the page talks to the server directly; hosted elsewhere (GitHub Pages) it posts to the web app.
+const API="https://script.google.com/macros/s/AKfycbyD0Q5zi68ON4Opx4LiEK2UAl2-4alPIPnRTJiJgTRgbDS-8cKkEdAQbWqUzJxIs8CW/exec";
+function submit(json,ok,no){
+  if(window.google&&google.script&&google.script.run)return google.script.run.withSuccessHandler(ok).withFailureHandler(no).submitGuestForm(json);
+  fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:json})
+    .then(r=>r.json()).then(r=>r.ok?ok():no(r.error)).catch(no);}
+addGuest();fit();paint();
+</script></body></html>
